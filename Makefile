@@ -16,7 +16,7 @@ help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 clean: ## remove all build, test, coverage and artifacts
-	rm -f ./dist/
+	rm -rf ./dist/
 
 build: clean ## builds extensions
 	mkdir -p ./dist/firefox
