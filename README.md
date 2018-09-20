@@ -1,2 +1,3 @@
-# firefox-extension-monospaced-jira
- :newspaper: Toggle between monospaced
+# Monospace Jira
+
+**This add-on convert inputs input-like fields in Jira to Monospace.**
