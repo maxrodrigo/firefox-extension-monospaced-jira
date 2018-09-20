@@ -1,17 +1,22 @@
 {
-
-  "description": "Toggle between monospaced textareas in Jira.",
   "manifest_version": 2,
+
   "name": "Monospace Jira",
-  "version": "1.0",
+  "description": "Toggle between monospaced textareas in Jira.",
   "homepage_url": "https://github.com/maxrodrigo/firefox-extension-monospaced-jira",
+  "version": "1.0",
 
   "background": {
     "scripts": ["background.js"]
   },
 
+  "icons": {
+      "48": "static/images/logo.svg",
+      "96": "static/images/logo.svg"
+  },
+
   "page_action": {
-    "default_icon": "icons/off.svg",
+    "default_icon": "static/images/off.svg",
     "browser_style": false
   },
 
