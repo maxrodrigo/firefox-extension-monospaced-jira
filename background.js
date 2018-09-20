@@ -2,6 +2,7 @@ const CSS = "textarea, .type-textarea { font-family: monospace !important; }";
 const TITLE_ENABLE = "Enable Monospace";
 const TITLE_DISABLE = "Disable Monospace";
 const APPLICABLE_PROTOCOLS = ["http:", "https:"];
+const APPLICABLE_HOSTS = ["lovetoknow.atlassian.net"];
 
 /*
 Toggle Monospace: based on the current title, enable or disable.
@@ -35,11 +36,20 @@ function protocolIsApplicable(url) {
 }
 
 /*
+Returns true if the Host is in APPLICABLE_HOSTS.
+*/
+function hostIsApplicable(url) {
+  var anchor = document.createElement('a');
+  anchor.href = url;
+  return APPLICABLE_HOSTS.includes(anchor.hostname);
+}
+
+/*
 Initialize the page action: set icon and title, then show.
 Only operates on tabs whose URL's protocol is applicable.
 */
 function initializePageAction(tab) {
-  if (protocolIsApplicable(tab.url)) {
+  if (protocolIsApplicable(tab.url) && hostIsApplicable(tab.url)) {
     browser.pageAction.setIcon({tabId: tab.id, path: "icons/off.svg"});
     browser.pageAction.setTitle({tabId: tab.id, title: TITLE_ENABLE});
     browser.pageAction.show(tab.id);
