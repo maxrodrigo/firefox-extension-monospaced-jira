@@ -2,7 +2,7 @@ const CSS = "textarea, .type-textarea { font-family: monospace !important; }";
 const TITLE_ENABLE = "Enable Monospace";
 const TITLE_DISABLE = "Disable Monospace";
 const APPLICABLE_PROTOCOLS = ["http:", "https:"];
-const APPLICABLE_HOSTS = ["lovetoknow.atlassian.net"];
+const APPLICABLE_HOSTS = ["atlassian.net"];
 
 /*
 Toggle Monospace: based on the current title, enable or disable.
@@ -41,7 +41,14 @@ Returns true if the Host is in APPLICABLE_HOSTS.
 function hostIsApplicable(url) {
   var anchor = document.createElement('a');
   anchor.href = url;
-  return APPLICABLE_HOSTS.includes(anchor.hostname);
+  var pattern;
+  for (var i = 0; i < APPLICABLE_HOSTS.length; i++) {
+    pattern = new RegExp(APPLICABLE_HOSTS[i]);
+    if (pattern.test(anchor.hostname)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /*
